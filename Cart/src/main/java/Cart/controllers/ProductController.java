@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import Cart.models.ProductModel;
 import Cart.service.ProductService;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/add")
-    public ResponseEntity<ProductModel> addItem(@RequestBody ProductModel item) {
+    public ResponseEntity<ProductModel> addItem(@Valid @RequestBody ProductModel item) {
         ProductModel createdItem = productService.addItem(item);
         return new ResponseEntity<>(createdItem, HttpStatus.CREATED);
     }
