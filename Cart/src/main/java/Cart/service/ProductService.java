@@ -15,12 +15,22 @@ public class ProductService {
 
     public ProductModel addItem(ProductModel item) {
     	
-        ProductModel savedItem = productRepository.save(item);
-        return savedItem;
+    	try {
+    		ProductModel savedItem = productRepository.save(item);
+            return savedItem;
+    	} catch (Exception e) {
+    		throw new RuntimeException("Error adding item: " + e.getMessage());
+    	}
+        
     }
 
     public List<ProductModel> getAllItems() {
-        List<ProductModel> items = productRepository.findAll();
-        return items;
+    	try {
+    	       List<ProductModel> items = productRepository.findAll();
+    	        return items;
+    	} catch (Exception e) {
+    		throw new RuntimeException("Error fetching all items: " + e.getMessage());
+    	}
+ 
     }
 }
