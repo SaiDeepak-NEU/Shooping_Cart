@@ -23,7 +23,7 @@ public class ProductModel {
     private Double price;
 
     @NotNull(message = "Quantity is mandatory")
-    @PositiveOrZero(message = "Quantity must be zero or positive")
+    @Positive(message = "Quantity must be positive")
     private Integer quantity;
 
     // Constructors
